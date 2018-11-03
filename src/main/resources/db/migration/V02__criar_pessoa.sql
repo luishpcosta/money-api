@@ -1,6 +1,6 @@
 CREATE TABLE pessoa
 (
-  id serial PRIMARY KEY NOT NULL,
+  id bigserial PRIMARY KEY NOT NULL,
   nome text NOT NULL,
   ativo boolean default false,
   logradouro text,

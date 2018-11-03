@@ -48,14 +48,14 @@ public class PessoaResource {
 	}
 	
 	@GetMapping("/{id}")
-	public ResponseEntity<Pessoa> buscarPorID(@PathVariable long id) {
+	public ResponseEntity<Pessoa> buscarPorID(@PathVariable Long id) {
 		Pessoa pessoa = pessoaRepository.getOne(id);
 		return pessoa != null ? ResponseEntity.ok().body(pessoa) : ResponseEntity.notFound().build();
 	}
 	
 	@DeleteMapping("/{id}")
 	@ResponseStatus(code = HttpStatus.NO_CONTENT)
-	public void remover(@PathVariable long id) {
+	public void remover(@PathVariable Long id) {
 		pessoaRepository.deleteById(id);
 		
 	}

@@ -6,4 +6,7 @@ import br.com.lhpc.money.api.models.Categoria;
 
 public interface CategoriaRepository extends JpaRepository<Categoria, Long> {
 	
+	Categoria findById (long id);
+	
+	
 }

@@ -1,5 +1,6 @@
 package br.com.lhpc.money.api.models;
 
+import java.io.Serializable;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 
@@ -7,31 +8,31 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
-
-import org.springframework.format.annotation.DateTimeFormat;
-
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @Entity
 @Table(name= "lancamento")
-@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
-public class Lancamento {
+public class Lancamento implements Serializable {
+	
+
+	private static final long serialVersionUID = 1L;
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Long id;
 	
+	@NotNull
 	@Size(min=3, max=50)
 	private String descricao;
 	
+	@NotNull
 	@Column(name = "data_vencimento")
 	private LocalDate dataVencimento;
 	
@@ -41,9 +42,10 @@ public class Lancamento {
 	
 	private BigDecimal valor;
 	
-	@Size(min=3, max=100)
+	@Size(min=3, max=50)
 	private String observacao;
 	
+	@NotNull
 	@Enumerated(EnumType.STRING)
 	private TipoLancamento tipo;
 	
@@ -51,8 +53,8 @@ public class Lancamento {
 	@JoinColumn(name="id_categoria")
 	private Categoria categoria;
 	
-	@ManyToOne
-	@JoinColumn(name="id_pessoa")
+    @ManyToOne
+	@JoinColumn( name = "id_pessoa")
 	private Pessoa pessoa;
 
 	public Long getId() {

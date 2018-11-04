@@ -48,8 +48,8 @@ public class PessoaResource {
 	}
 	
 	@GetMapping("/{id}")
-	public ResponseEntity<Pessoa> buscarPorID(@PathVariable Long id) {
-		Pessoa pessoa = pessoaRepository.getOne(id);
+	public ResponseEntity<Pessoa> buscarPorId(@PathVariable long id) {
+		Pessoa pessoa = pessoaRepository.findById(id);
 		return pessoa != null ? ResponseEntity.ok().body(pessoa) : ResponseEntity.notFound().build();
 	}
 	

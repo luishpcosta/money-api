@@ -22,6 +22,7 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.context.request.WebRequest;
 import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExceptionHandler;
 
+
 @ControllerAdvice
 public class MoneyExceptionHandler extends ResponseEntityExceptionHandler {
 	
@@ -54,12 +55,13 @@ public class MoneyExceptionHandler extends ResponseEntityExceptionHandler {
 	}
 	
 	@ExceptionHandler({DataIntegrityViolationException.class})
-	public ResponseEntity<Object>  handleDataIntegrityViolationException(DataIntegrityViolationException ex, WebRequest request) {
+	public ResponseEntity<Object>  handleDataIntegrityViolationException(Exception ex, WebRequest request) {
 		String message = messageSource.getMessage("mensagem.nao.permitida", null, LocaleContextHolder.getLocale());
 		String error = ExceptionUtils.getRootCauseMessage(ex);
 		List<Erro> erros = Arrays.asList(new Erro(message, error));	
 		return super.handleExceptionInternal(ex, erros, new HttpHeaders(), HttpStatus.BAD_REQUEST, request);
 	}
+
 
 	private List<Erro> geraListaDeErros(BindingResult bindingResult) {
 		List<Erro> erros = new ArrayList<>();

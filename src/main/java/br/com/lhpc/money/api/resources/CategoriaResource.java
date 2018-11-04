@@ -34,6 +34,7 @@ public class CategoriaResource {
 	@Autowired
 	private ApplicationEventPublisher publisher;
 	
+	@Autowired
 	private CategoriaService categoriaService;
 	
 	@GetMapping
@@ -49,8 +50,8 @@ public class CategoriaResource {
 	}
 	
 	@GetMapping("/{id}")
-	public ResponseEntity<Categoria> buscarPorId(@PathVariable Long id) {
-		Categoria categoria = categoriaRepository.getOne(id);
+	public ResponseEntity<Categoria> buscarPorId(@PathVariable long id) {
+		Categoria categoria = categoriaRepository.findById(id);
 		return  categoria != null ? ResponseEntity.ok().body(categoria) : ResponseEntity.notFound().build() ;
 		
 	}

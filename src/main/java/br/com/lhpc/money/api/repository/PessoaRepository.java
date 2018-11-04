@@ -6,4 +6,5 @@ import br.com.lhpc.money.api.models.Pessoa;
 
 public interface PessoaRepository extends JpaRepository<Pessoa, Long>{
 	
+	Pessoa findById(long id);
 }

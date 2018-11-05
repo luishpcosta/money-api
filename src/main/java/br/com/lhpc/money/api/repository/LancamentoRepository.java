@@ -7,7 +7,4 @@ import br.com.lhpc.money.api.repository.lancamento.LancamentoRepositoryQuery;
 
 public interface LancamentoRepository extends JpaRepository<Lancamento, Long> , LancamentoRepositoryQuery{
 	
-	Lancamento findById(long id);
-	
-
 }

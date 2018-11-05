@@ -50,8 +50,8 @@ public class CategoriaResource {
 	}
 	
 	@GetMapping("/{id}")
-	public ResponseEntity<Categoria> buscarPorId(@PathVariable long id) {
-		Categoria categoria = categoriaRepository.findById(id);
+	public ResponseEntity<Categoria> buscarPorId(@PathVariable Long id) {
+		Categoria categoria = categoriaRepository.findOne(id);
 		return  categoria != null ? ResponseEntity.ok().body(categoria) : ResponseEntity.notFound().build() ;
 		
 	}
@@ -59,7 +59,7 @@ public class CategoriaResource {
 	@DeleteMapping("/{id}")
 	@ResponseStatus(code = HttpStatus.NO_CONTENT)
 	public void remover(@PathVariable Long id) {
-		categoriaRepository.deleteById(id);
+		categoriaRepository.delete(id);
 	}
 	
 	@PutMapping("/{id}")

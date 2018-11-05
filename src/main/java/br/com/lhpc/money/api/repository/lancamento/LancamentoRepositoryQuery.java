@@ -1,7 +1,5 @@
 package br.com.lhpc.money.api.repository.lancamento;
 
-import java.util.List;
-
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 

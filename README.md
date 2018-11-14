@@ -1,5 +1,5 @@
 # money-api
-API da aplicação de money
+API da aplicação money
 
 Este é o projeto tem o objetivo de aprofundar conhecimentos sobre Spring Boot voltado para API.
 Trabalhando com persistência de dados (PostgreSQL), migrações com o Flyway, tratamento de erros, Spring Security e OAuth 2.0
